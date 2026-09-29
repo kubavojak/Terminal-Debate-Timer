@@ -1,0 +1,90 @@
+# GoReleaser v2 – https://goreleaser.com
+# Replace OWNER with the GitHub user or organisation of the repository.
+version: 2
+project_name: debtime
+
+before:
+  hooks:
+    - go mod tidy
+    - go test ./...
+
+builds:
+  - id: debtime
+    main: ./cmd/debtime
+    binary: debtime
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - "7"
+    ignore:
+      - goos: darwin
+        goarch: arm
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+
+archives:
+  - formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
+    files:
+      - README.md
+      - LICENSE*
+
+checksum:
+  name_template: checksums.txt
+
+nfpms:
+  - id: packages
+    package_name: debtime
+    file_name_template: >-
+      {{ .PackageName }}_{{ .Version }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
+    vendor: DebTime
+    homepage: https://github.com/OWNER/debtime-cli
+    maintainer: DebTime <OWNER@users.noreply.github.com>
+    description: Stopky pro akademické debaty v terminálu (BP, Karl Popper, World Schools, …)
+    formats:
+      - deb
+      - rpm
+    license: MIT
+    bindir: /usr/bin
+    # Any of these plays the bundled sounds; without them the terminal bell is used.
+    suggests:
+      - pipewire-bin
+      - pulseaudio-utils
+      - alsa-utils
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+# Optional: AUR package debtime-bin (needs the AUR_KEY secret).
+# aurs:
+#   - name: debtime-bin
+#     homepage: https://github.com/OWNER/debtime-cli
+#     description: Debate timer for the terminal
+#     maintainers: ["DebTime <OWNER@users.noreply.github.com>"]
+#     license: MIT
+#     private_key: "{{ .Env.AUR_KEY }}"
+#     git_url: ssh://aur@aur.archlinux.org/debtime-bin.git
+
+# Optional: Homebrew tap (needs a tap repository and a token).
+# brews:
+#   - name: debtime
+#     repository:
+#       owner: OWNER
+#       name: homebrew-tap
+#       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+#     homepage: https://github.com/OWNER/debtime-cli
+#     description: Debate timer for the terminal
