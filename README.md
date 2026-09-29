@@ -36,15 +36,36 @@ curl -fsSL https://raw.githubusercontent.com/kubavojak/Terminal-Debate-Timer/mai
 curl -fsSL https://raw.githubusercontent.com/kubavojak/Terminal-Debate-Timer/main/install.sh | sh -s -- --system
 ```
 
-Nebo balíček z [Releases](https://github.com/kubavojak/Terminal-Debate-Timer/releases):
+Po instalaci stačí v terminálu napsat `debtime`. Když příkaz není nalezen,
+otevřete nový terminál (`~/.local/bin` se do PATH přidá až po novém přihlášení).
+
+### Balíček .deb (Ubuntu, Debian)
+
+Balíček je potřeba nejdřív stáhnout a pak nainstalovat ze stažené složky
+(`./` na začátku je nutné):
 
 ```sh
-sudo apt install ./debtime_X.Y.Z_amd64.deb
-sudo dnf install ./debtime_X.Y.Z_amd64.rpm
+curl -fLO https://github.com/kubavojak/Terminal-Debate-Timer/releases/download/v0.1.0/debtime_0.1.0_amd64.deb
+sudo apt install ./debtime_0.1.0_amd64.deb
 ```
 
-Nebo stáhnout archiv `debtime_X.Y.Z_linux_<arch>.tar.gz` (amd64, arm64,
-armv7 pro Raspberry Pi) a spustit `debtime`.
+Pro Raspberry Pi nahraďte `amd64` za `arm64` (64bitový systém) nebo `armv7`
+(32bitový). Nejnovější verze je vždy na stránce
+[Releases](https://github.com/kubavojak/Terminal-Debate-Timer/releases).
+
+### Balíček .rpm (Fedora, openSUSE)
+
+```sh
+curl -fLO https://github.com/kubavojak/Terminal-Debate-Timer/releases/download/v0.1.0/debtime_0.1.0_amd64.rpm
+sudo dnf install ./debtime_0.1.0_amd64.rpm
+```
+
+### Samotný soubor
+
+```sh
+curl -fL https://github.com/kubavojak/Terminal-Debate-Timer/releases/download/v0.1.0/debtime_0.1.0_linux_amd64.tar.gz | tar -xz debtime
+./debtime
+```
 
 ## Použití
 
