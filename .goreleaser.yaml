@@ -1,5 +1,4 @@
 # GoReleaser v2 – https://goreleaser.com
-# Replace OWNER with the GitHub user or organisation of the repository.
 version: 2
 project_name: debtime
 
@@ -48,8 +47,8 @@ nfpms:
     file_name_template: >-
       {{ .PackageName }}_{{ .Version }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
     vendor: DebTime
-    homepage: https://github.com/OWNER/debtime-cli
-    maintainer: DebTime <OWNER@users.noreply.github.com>
+    homepage: https://github.com/kubavojak/Terminal-Debate-Timer
+    maintainer: DebTime <kubavojak@users.noreply.github.com>
     description: Stopky pro akademické debaty v terminálu (BP, Karl Popper, World Schools, …)
     formats:
       - deb
@@ -72,9 +71,9 @@ changelog:
 # Optional: AUR package debtime-bin (needs the AUR_KEY secret).
 # aurs:
 #   - name: debtime-bin
-#     homepage: https://github.com/OWNER/debtime-cli
+#     homepage: https://github.com/kubavojak/Terminal-Debate-Timer
 #     description: Debate timer for the terminal
-#     maintainers: ["DebTime <OWNER@users.noreply.github.com>"]
+#     maintainers: ["DebTime <kubavojak@users.noreply.github.com>"]
 #     license: MIT
 #     private_key: "{{ .Env.AUR_KEY }}"
 #     git_url: ssh://aur@aur.archlinux.org/debtime-bin.git
@@ -83,8 +82,8 @@ changelog:
 # brews:
 #   - name: debtime
 #     repository:
-#       owner: OWNER
+#       owner: kubavojak
 #       name: homebrew-tap
 #       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
-#     homepage: https://github.com/OWNER/debtime-cli
+#     homepage: https://github.com/kubavojak/Terminal-Debate-Timer
 #     description: Debate timer for the terminal

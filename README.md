@@ -29,11 +29,14 @@ Další: Místopremiér · OG 2
 ## Instalace
 
 ```sh
-curl -fsSL https://<web>/install.sh | sh              # do ~/.local/bin
-curl -fsSL https://<web>/install.sh | sh -s -- --system  # do /usr/local/bin (sudo)
+# do ~/.local/bin
+curl -fsSL https://raw.githubusercontent.com/kubavojak/Terminal-Debate-Timer/main/install.sh | sh
+
+# nebo do /usr/local/bin (sudo)
+curl -fsSL https://raw.githubusercontent.com/kubavojak/Terminal-Debate-Timer/main/install.sh | sh -s -- --system
 ```
 
-Nebo balíček z [Releases](https://github.com/OWNER/debtime-cli/releases):
+Nebo balíček z [Releases](https://github.com/kubavojak/Terminal-Debate-Timer/releases):
 
 ```sh
 sudo apt install ./debtime_X.Y.Z_amd64.deb
@@ -129,5 +132,4 @@ stopek, signály), `internal/clock` (čas s ochranou proti uspání),
 
 Tag `v*` spustí GitHub Actions a GoReleaser: binárky pro linux/amd64,
 linux/arm64, linux/armv7 a macOS, archivy `.tar.gz`, `checksums.txt`,
-balíčky `.deb` a `.rpm`. Před prvním vydáním nahraďte `OWNER`
-v `.goreleaser.yaml`, `install.sh` a tomto README.
+balíčky `.deb` a `.rpm`.

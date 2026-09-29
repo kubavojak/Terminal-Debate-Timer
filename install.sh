@@ -1,14 +1,14 @@
 #!/bin/sh
 # Installs the latest DebTime CLI release.
 #
-#   curl -fsSL https://<web>/install.sh | sh
-#   curl -fsSL https://<web>/install.sh | sh -s -- --system   # /usr/local/bin
+#   curl -fsSL https://raw.githubusercontent.com/kubavojak/Terminal-Debate-Timer/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/kubavojak/Terminal-Debate-Timer/main/install.sh | sh -s -- --system   # /usr/local/bin
 #
 # Environment: DEBTIME_REPO (owner/repo), DEBTIME_VERSION (e.g. v1.2.0),
 # DEBTIME_INSTALL_DIR (target directory).
 set -eu
 
-REPO="${DEBTIME_REPO:-OWNER/debtime-cli}"
+REPO="${DEBTIME_REPO:-kubavojak/Terminal-Debate-Timer}"
 SYSTEM=0
 for arg in "$@"; do
 	case "$arg" in
